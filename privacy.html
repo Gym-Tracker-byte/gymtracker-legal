@@ -211,16 +211,44 @@
     di 14 anni.
   </p>
 
-  <h2>12. Misure di Sicurezza</h2>
+  <h2>12. Misure di Sicurezza (Art. 32 GDPR)</h2>
   <p>
-    Adottiamo misure tecniche e organizzative adeguate per proteggere i tuoi
-    dati: crittografia in transito (TLS 1.2+) e a riposo, Row-Level Security
-    (RLS) sul database, autenticazione tramite token JWT, backup automatici
-    criptati, controllo accessi limitato al personale autorizzato.
+    Adottiamo misure tecniche e organizzative adeguate al rischio per proteggere
+    i tuoi dati personali, in particolare per i dati di salute (Art. 9 GDPR):
+  </p>
+  <h3>Misure tecniche</h3>
+  <ul>
+    <li>Comunicazioni cifrate end-to-end in transito (TLS 1.2+)</li>
+    <li>Database PostgreSQL con cifratura a riposo (AES-256)</li>
+    <li>Row-Level Security su tutte le tabelle: ogni utente vede solo i propri dati</li>
+    <li>Storage foto progressi con accesso limitato al solo proprietario (bucket privato + signed URL temporanee)</li>
+    <li>Token di sessione conservati in Keychain (iOS) o Keystore (Android) hardware-backed</li>
+    <li>Password utenti memorizzate solo come hash bcrypt (Supabase Auth)</li>
+    <li>Validazione JWT obbligatoria su tutte le Edge Function</li>
+    <li>Rate limiting per prevenire abuso del Coach AI</li>
+    <li>Email confirmation obbligatoria al signup</li>
+    <li>Opzionale: blocco biometrico (Face ID / Touch ID) all'apertura app</li>
+  </ul>
+  <h3>Misure organizzative</h3>
+  <ul>
+    <li>Accesso ai sistemi limitato al solo Titolare del trattamento</li>
+    <li>Backup automatici giornalieri del database (gestione Supabase)</li>
+    <li>Procedura interna documentata per la gestione di data breach</li>
+    <li>Monitoraggio continuo via Sentry (con consenso utente)</li>
+    <li>Aggiornamento periodico delle dipendenze software</li>
+    <li>Codice sorgente conservato in repository privato</li>
+  </ul>
+  <p>
+    In caso di violazione dei dati personali (data breach), il Titolare ti
+    notificherà senza ingiustificato ritardo (e comunque entro 72 ore dalla
+    scoperta) qualora la violazione comporti un rischio elevato per i tuoi
+    diritti e libertà, ai sensi dell'art. 34 GDPR. La notifica avverrà via
+    email all'indirizzo associato al tuo account e potrà essere integrata da
+    comunicazione in-app o sulla nostra pagina pubblica.
   </p>
   <p>
-    In caso di data breach, ti notificheremo entro 72 ore se sussistono rischi
-    per i tuoi diritti e libertà, ai sensi dell'art. 34 GDPR.
+    Le violazioni saranno parimenti notificate al Garante per la Protezione
+    dei Dati Personali entro le 72 ore previste dall'art. 33 GDPR.
   </p>
 
   <h2>13. Modifiche alla Privacy Policy</h2>
